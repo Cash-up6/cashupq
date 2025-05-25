@@ -63,7 +63,11 @@
     }
 
     .cta {
-      background-color: #4b0082; /* Dark purple */
+      background-color: #5a00b1;
+    }
+
+    .cta:hover {
+      background-color: #3f0080;
     }
 
     .promo-button {
@@ -290,3 +294,140 @@
       <div class="icon">👤</div>
       <div class="info">
         <h3>වයස</h3>
+        <p>අවුරුදු 20–60 අතර</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">📍</div>
+      <div class="info">
+        <h3>නවසී ස්ථානය</h3>
+        <p>ශ්‍රී ලංකාවේ නවාසිකයෙකු වීම</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">💳</div>
+      <div class="info">
+        <h3>රැකියාව</h3>
+        <p>ස්ථිර ආදායමක් තිබීම</p>
+      </div>
+    </div>
+    <a class="cta" href="https://forms.gle/UjCRzKGr3cgYahkv8" target="_blank">දැන්ම ණයක් ඉල්ලන්න</a>
+  </div>
+
+  <section class="promo-section">
+    <img src="https://i.ibb.co/nMDZ3sMb/pexels-moose-photos-170195-1036622.jpg" class="promo-image" />
+    <div class="promo-text">
+      <p>ඔබගේ පළමු online ණය – විනාඩි 15න්!</p>
+      <a class="promo-button" href="https://forms.gle/qPBJuX9akn4aRtGR9" target="_blank">Apply for a loan</a>
+    </div>
+  </section>
+
+  <div class="steps-section">
+    <div class="step">
+      <div class="number">1</div>
+      <div class="text"><strong>ඔබේ ණය මුදල තෝරන්න</strong></div>
+    </div>
+    <div class="step">
+      <div class="number">2</div>
+      <div class="text"><strong>තිරණය සඳහා රැදී සිටින්න</strong></div>
+    </div>
+    <div class="step">
+      <div class="number">3</div>
+      <div class="text"><strong>ඔබගේ ගිණුමට මුදල් ලැබේ</strong></div>
+      <div class="check">✔</div>
+    </div>
+  </div>
+
+  <div class="features-section">
+    <h2>අපගේ විශේෂත්වය</h2>
+    <div class="card">
+      <div class="icon">~</div>
+      <div class="info">
+        <h3>ලභාදයකි</h3>
+        <p>අවම ආපසු ගෙවීම් මුදලක් නිසා අපගේ සේවාව සුපිරියකි</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">✓</div>
+      <div class="info">
+        <h3>විශ්වාසනීයයි</h3>
+        <p>Capital Lanka යනු වගකීමකින් යුතු සේවාවකි</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">101</div>
+      <div class="info">
+        <h3>සරලයි</h3>
+        <p>ඉක්මන් හා සරල මුදල් විස්දැම් ඔබගේ නිවසේ සිටම</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="promo-section">
+    <img src="https://i.ibb.co/q3W93MjW/features.png" class="promo-image" />
+    <div class="promo-text">
+      <p>Wait for the decision<br>Decision made in just 1 minute</p>
+      <a class="small-promo-button" href="https://forms.gle/qPBJuX9akn4aRtGR9" target="_blank">Apply for a loan</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <div>
+        <a href="#">Home</a>
+        <a href="#">Apply for a loan</a>
+        <a href="#">Privacy policy</a>
+        <a href="#">Help</a>
+      </div>
+      <div>
+        <a href="#">How to pay</a>
+        <a href="#">About</a>
+        <a href="#">Terms & conditions</a>
+      </div>
+    </div>
+    <div class="footer-contact">
+      <h3>Contact us:</h3>
+      <p><i class="fas fa-phone-alt"></i>072 456 1337</p>
+      <p><i class="fas fa-envelope"></i>Capital.lk</p>
+      <p><i class="fas fa-clock"></i>Daily 8:00 AM - 10:30 PM</p>
+      <div class="social-icons">
+        <span>Follow us</span>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const loanRange = document.getElementById("loanRange");
+    const loanAmount = document.getElementById("loanAmount");
+    const repaymentAmount = document.getElementById("repaymentAmount");
+    const interestRate = document.getElementById("interestRate");
+    const duration = document.getElementById("duration");
+    const monthlyPayment = document.getElementById("monthlyPayment");
+
+    function updateLoanDetails(value) {
+      const loan = parseInt(value);
+      const interestRateValue = 0.07;
+      const months = 7;
+
+      const interest = loan * interestRateValue;
+      const totalRepayment = loan + interest;
+      const monthly = totalRepayment / months;
+
+      loanAmount.textContent = loan.toLocaleString();
+      repaymentAmount.textContent = totalRepayment.toLocaleString(undefined, { maximumFractionDigits: 0 });
+      interestRate.textContent = "7%";
+      duration.textContent = months;
+      monthlyPayment.textContent = monthly.toLocaleString(undefined, { maximumFractionDigits: 0 });
+    }
+
+    updateLoanDetails(loanRange.value);
+
+    loanRange.addEventListener("input", function () {
+      updateLoanDetails(this.value);
+    });
+  </script>
+
+</body>
+</html>
