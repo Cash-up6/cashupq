@@ -2,41 +2,37 @@
 <html lang="si">
 <head>
   <meta charset="UTF-8">
-  <title>ණය අයදුම්පත</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Application</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Helvetica Neue', sans-serif;
-      background-color: #f4f4f4;
       margin: 0;
-      padding: 0;
-      color: #333;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
     }
 
     .container {
       max-width: 500px;
-      margin: 40px auto;
-      padding: 30px 20px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      padding: 20px;
+      background: #ffffff;
     }
 
-    h2 {
-      color: #0275d8;
-      margin-bottom: 10px;
+    h2, h3, p {
       text-align: center;
     }
 
-    p {
-      font-size: 1rem;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .slider-container {
-      margin-bottom: 25px;
+    .slider-container,
+    .repayment,
+    .stats-cards,
+    .loan-offer-card,
+    .service-eligibility {
+      margin-top: 30px;
+      width: 100%;
     }
 
     label {
@@ -47,229 +43,125 @@
 
     input[type="range"] {
       width: 100%;
-      margin: 10px 0;
     }
 
     .output {
-      font-size: 1.2rem;
-      font-weight: bold;
       text-align: right;
-      color: #333;
+      font-weight: bold;
+      margin-top: 5px;
     }
 
     .repayment {
-      background-color: #f9f9f9;
+      background: #f0f0f0;
+      padding: 15px;
       border-radius: 8px;
-      padding: 20px;
-      margin-top: 20px;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    .repayment strong {
-      color: #444;
+      font-size: 0.95rem;
     }
 
     .btn {
       display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
       background-color: #28a745;
       color: white;
       text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      margin: 20px auto;
-      font-size: 1rem;
-      width: fit-content;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #218838;
-    }
-
-    .btn.glow {
-      box-shadow: 0 0 10px #28a745, 0 0 20px #28a745, 0 0 30px #28a745;
-      animation: glowPulse 1.5s infinite alternate;
-    }
-
-    @keyframes glowPulse {
-      from {
-        box-shadow: 0 0 5px #28a745;
-      }
-      to {
-        box-shadow: 0 0 20px #28a745, 0 0 30px #28a745;
-      }
+      text-align: center;
+      border-radius: 6px;
+      font-weight: bold;
     }
 
     .stats-cards {
       display: flex;
+      gap: 10px;
       flex-wrap: wrap;
-      justify-content: space-between;
-      margin-top: 40px;
-      gap: 1rem;
     }
 
     .card {
-      flex: 1;
-      background: linear-gradient(145deg, #3a2c4f, #2e2142);
+      flex: 1 1 45%;
+      background: #673ab7;
       color: white;
-      padding: 20px;
-      border-radius: 15px;
+      padding: 15px;
+      border-radius: 8px;
       text-align: center;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-      min-width: 45%;
-    }
-
-    .card .icon {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #c084fc;
-    }
-
-    .card .number {
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    .card .label {
-      margin-top: 10px;
-      font-size: 1rem;
     }
 
     .loan-offer-card {
-      margin-top: 40px;
-      padding: 25px;
-      background-color: #e0f7fa;
-      border-radius: 12px;
+      background: #e0f7fa;
+      padding: 20px;
+      border-radius: 8px;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      min-height: 350px;
     }
 
-    .loan-card-content img {
-      width: 100%;
-      max-width: 200px;
+    .loan-offer-card img {
+      max-width: 100%;
       height: auto;
-      margin: 15px auto;
-      display: block;
-    }
-
-    .loan-card-content p {
-      margin: 5px 0;
-      font-size: 1rem;
-      color: #333;
-    }
-
-    .loan-offer-card h3 {
-      margin: 0;
-      font-size: 1.4rem;
-      color: #007bff;
+      margin-bottom: 10px;
     }
 
     .btn-loan {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 24px;
       background-color: #007bff;
       color: white;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-loan:hover {
-      background-color: #0056b3;
+      padding: 10px 20px;
+      display: inline-block;
+      border-radius: 6px;
+      margin-top: 10px;
     }
 
     .service-eligibility {
-      margin-top: 40px;
       background-image: url('https://i.ibb.co/hFVvTxGY/Whats-App-Image-2025-05-27-at-10-09-48-05ead45a.jpg');
       background-size: cover;
       background-position: center;
-      border-radius: 12px;
+      border-radius: 8px;
       overflow: hidden;
-      height: 350px;
+      height: 300px;
+      position: relative;
     }
 
     .service-eligibility .overlay {
-      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
-      padding: 40px 20px;
+      background: rgba(0, 0, 0, 0.5);
       color: white;
-      text-align: center;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-    }
-
-    .service-eligibility h2 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
+      align-items: center;
+      text-align: center;
     }
 
     .service-eligibility ul {
       list-style: none;
       padding: 0;
-      margin: 0 0 20px 0;
+      margin: 10px 0;
     }
 
     .service-eligibility li {
-      font-size: 1rem;
       margin-bottom: 10px;
-    }
-
-    .service-eligibility i {
-      margin-right: 10px;
     }
 
     .btn-cta {
       background-color: #00c853;
       color: white;
-      padding: 12px 24px;
+      padding: 10px 20px;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 6px;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      margin-top: 10px;
     }
 
-    .btn-cta:hover {
-      background-color: #009624;
-    }
+    @media (max-width: 600px) {
+      .card {
+        flex: 1 1 100%;
+      }
 
-    @media screen and (max-width: 600px) {
       .container {
-        margin: 20px 10px;
-      }
-
-      .stats-cards {
-        flex-direction: column;
-      }
-
-      .card, .loan-offer-card {
-        width: 100%;
-        min-width: 100%;
-      }
-
-      .loan-offer-card {
-        min-height: 400px;
-      }
-
-      .service-eligibility {
-        height: 400px;
-      }
-
-      .loan-offer-card h3 {
-        font-size: 1.5rem;
-      }
-
-      .loan-card-content p {
-        font-size: 1.1rem;
-      }
-
-      .btn-loan {
-        font-size: 1.1rem;
-        padding: 12px 28px;
+        padding: 15px;
       }
     }
   </style>
@@ -278,53 +170,49 @@
 
   <div class="container">
     <h2>රු 500,000 දක්වා ණය – සම්පූර්ණයෙන්ම Online!</h2>
-    <p>සරල අයදුම් ක්‍රියාවලියක් – ඔබේ හැඳුනුම්පත පමණක් අවශ්‍ය වේ.</p>
+    <p>අවශ්‍ය වන්නේ ඔබේ හැඳුනුම්පත පමණි!</p>
 
     <div class="slider-container">
-      <label for="loanRange">ඔබගේ ණය මුදල තෝරන්න:</label>
-      <input type="range" id="loanRange" min="40000" max="300000" step="1000" value="40000" />
-      <div class="output">රු <span id="loanAmount">40,000</span></div>
+      <label for="loanRange">ඔබට අවශ්‍ය මුදල:</label>
+      <input type="range" id="loanRange" min="40000" max="300000" step="1000" value="40000">
+      <div class="output">රු <span id="loanAmount">40000</span></div>
     </div>
 
     <div class="repayment">
-      මුළු ආපසු ගෙවීමේ මුදල: රු <span id="repaymentAmount">44,000</span><br>
-      පොලී අනුපාතය: <span id="interestRate">10%</span><br>
-      <strong>කාලය:</strong> <span id="duration">6</span> මාස<br>
-      <strong>මාසික ගෙවීම:</strong> රු <span id="monthlyPayment">7,333</span>
+      මුළු ගෙවීම: රු <span id="repaymentAmount">44000</span><br>
+      පොලී: <span id="interestRate">10%</span><br>
+      කාලය: <span id="duration">6</span> මාස<br>
+      මාසික ගෙවීම: රු <span id="monthlyPayment">7333</span>
     </div>
 
-    <a class="btn glow" href="https://forms.gle/qPBJuX9akn4aRtGR9" target="_blank">ණයක් ඉල්ලන්න</a>
+    <a href="https://forms.gle/qPBJuX9akn4aRtGR9" target="_blank" class="btn">ණයක් ඉල්ලන්න</a>
 
     <div class="stats-cards">
       <div class="card">
-        <div class="icon"><i class="fas fa-users"></i></div>
-        <div class="number">312,000</div>
-        <div class="label">ක්‍ෂු තත්පරින් සේවා දායකයින්</div>
+        <div>සේවාදායකයන්</div>
+        <div style="font-size: 1.5rem;">312,000+</div>
       </div>
       <div class="card">
-        <div class="icon"><i class="fas fa-user-plus"></i></div>
-        <div class="number" id="newUsers">255</div>
-        <div class="label">අද දිනය තුළ නව ප්‍රමාණය</div>
+        <div>අලුත් Join උනේ අද</div>
+        <div style="font-size: 1.5rem;" id="newUsers">255</div>
       </div>
     </div>
 
     <div class="loan-offer-card">
       <h3>Get a loan in 15 minutes</h3>
-      <div class="loan-card-content">
-        <img src="https://i.ibb.co/hFVvTxGY/Whats-App-Image-2025-05-27-at-10-09-48-05ead45a.jpg" />
-        <p><strong>Giving everyone up to LKR 100,000 for any purpose</strong></p>
-        <p>Registration in 10 minutes</p>
-        <a href="#" class="btn-loan">Get money</a>
-      </div>
+      <img src="https://i.ibb.co/hFVvTxGY/Whats-App-Image-2025-05-27-at-10-09-48-05ead45a.jpg" alt="Loan">
+      <p>Up to LKR 100,000 for any purpose</p>
+      <p>Registration in 10 minutes</p>
+      <a href="#" class="btn-loan">Get money</a>
     </div>
 
     <div class="service-eligibility">
       <div class="overlay">
-        <h2>Who can use our service?</h2>
+        <h3>Who can use our service?</h3>
         <ul>
-          <li><i class="fas fa-smile"></i> <strong>Age:</strong> 22 - 80 years</li>
-          <li><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Sri Lanka</li>
-          <li><i class="fas fa-briefcase"></i> <strong>Occupation:</strong> Whoever who generates an income can use our services</li>
+          <li>Age: 22 - 80</li>
+          <li>Location: Sri Lanka</li>
+          <li>Income: Any income earner</li>
         </ul>
         <a href="#" class="btn-cta">Get money now</a>
       </div>
@@ -332,95 +220,36 @@
   </div>
 
   <script>
-    const loanRange = document.getElementById("loanRange");
+    const range = document.getElementById("loanRange");
     const loanAmount = document.getElementById("loanAmount");
     const repaymentAmount = document.getElementById("repaymentAmount");
     const interestRate = document.getElementById("interestRate");
     const duration = document.getElementById("duration");
     const monthlyPayment = document.getElementById("monthlyPayment");
 
-    function updateLoanDetails(value) {
-      const loan = parseInt(value);
-      const interestRateValue = 0.10;
-      let months;
+    function updateValues(value) {
+      const amount = parseInt(value);
+      const interest = 0.1;
+      let months = 6;
+      if (amount > 70000) months = 12;
+      if (amount > 150000) months = 24;
+      if (amount > 220000) months = 30;
 
-      if (loan <= 70000) {
-        months = 6;
-      } else if (loan <= 150000) {
-        months = 12;
-      } else if (loan <= 220000) {
-        months = 24;
-      } else {
-        months = 30;
-      }
+      const total = amount + amount * interest;
+      const monthly = total / months;
 
-      const interest = loan * interestRateValue;
-      const totalRepayment = loan + interest;
-      const monthly = totalRepayment / months;
-
-      loanAmount.textContent = loan.toLocaleString();
-      repaymentAmount.textContent = totalRepayment.toLocaleString(undefined, { maximumFractionDigits: 0 });
+      loanAmount.textContent = amount.toLocaleString();
+      repaymentAmount.textContent = Math.round(total).toLocaleString();
       interestRate.textContent = "10%";
       duration.textContent = months;
-      monthlyPayment.textContent = monthly.toLocaleString(undefined, { maximumFractionDigits: 0 });
+      monthlyPayment.textContent = Math.round(monthly).toLocaleString();
     }
 
-    window.addEventListener("DOMContentLoaded", () => {
-      let current = 300000;
-      const interval = setInterval(() => {
-        loanRange.value = current;
-        updateLoanDetails(current);
-        if (current <= 40000) {
-          clearInterval(interval);
-        } else {
-          current -= 1000;
-        }
-      }, 10);
+    range.addEventListener("input", (e) => {
+      updateValues(e.target.value);
     });
 
-    loanRange.addEventListener("input", function () {
-      updateLoanDetails(this.value);
-    });
-
-    const userCounts = [
-      { time: "08:00", count: 70 },
-      { time: "09:00", count: 110 },
-      { time: "10:00", count: 200 },
-      { time: "12:00", count: 3000 },
-      { time: "15:00", count: 500 },
-      { time: "18:00", count: 800 }
-    ];
-
-    function getCurrentCount() {
-      const now = new Date();
-      const currentMinutes = now.getHours() * 60 + now.getMinutes();
-      let latest = userCounts[0].count;
-
-      for (let i = 0; i < userCounts.length; i++) {
-        const [h, m] = userCounts[i].time.split(":").map(Number);
-        const mins = h * 60 + m;
-        if (currentMinutes >= mins) {
-          latest = userCounts[i].count;
-        }
-      }
-
-      return latest;
-    }
-
-    function animateUserCount() {
-      const userDiv = document.getElementById("newUsers");
-      let current = parseInt(userDiv.textContent.replace(/,/g, ""));
-      const target = getCurrentCount();
-
-      if (current < target) {
-        current += 5;
-        userDiv.textContent = current.toLocaleString();
-      }
-    }
-
-    setInterval(animateUserCount, 5 * 60 * 1000);
-    animateUserCount();
+    updateValues(range.value);
   </script>
-
 </body>
 </html>
