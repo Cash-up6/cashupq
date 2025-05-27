@@ -86,6 +86,41 @@
     .btn:hover {
       background-color: #218838;
     }
+
+    .stats-cards {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex: 1;
+      background: linear-gradient(145deg, #3a2c4f, #2e2142);
+      color: white;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      min-width: 45%;
+    }
+
+    .card .icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #c084fc;
+    }
+
+    .card .number {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .card .label {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -96,7 +131,7 @@
 
     <div class="slider-container">
       <label for="loanRange">ඔබගේ ණය මුදල තෝරන්න:</label>
-     <input type="range" id="loanRange" min="40000" max="300000" step="10000" value="40000" />
+      <input type="range" id="loanRange" min="40000" max="300000" step="10000" value="40000" />
       <div class="output">රු <span id="loanAmount">30,000</span></div>
     </div>
 
@@ -108,6 +143,20 @@
     </div>
 
     <a class="btn" href="https://forms.gle/qPBJuX9akn4aRtGR9" target="_blank">ණයක් ඉල්ලන්න</a>
+
+    <!-- Stats Cards Section -->
+    <div class="stats-cards">
+      <div class="card">
+        <div class="icon"><i class="fas fa-users"></i></div>
+        <div class="number">312.000</div>
+        <div class="label">ක්‍ෂු තත්පරින් සේවා දායකයින්</div>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-user-plus"></i></div>
+        <div class="number">255</div>
+        <div class="label">අද දිනය තුළ නව ප්‍රමාණය</div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -118,33 +167,31 @@
     const duration = document.getElementById("duration");
     const monthlyPayment = document.getElementById("monthlyPayment");
 
+    function updateLoanDetails(value) {
+      const loan = parseInt(value);
+      const interestRateValue = 0.07;
+      let months;
 
-    
- function updateLoanDetails(value) {
-  const loan = parseInt(value);
-  const interestRateValue = 0.07;
-  let months;
+      if (loan <= 70000) {
+        months = 6;
+      } else if (loan <= 150000) {
+        months = 12;
+      } else if (loan <= 220000) {
+        months = 24;
+      } else {
+        months = 30;
+      }
 
-  if (loan <= 70000) {
-    months = 6;
-  } else if (loan <= 150000) {
-    months = 12;
-  } else if (loan <= 220000) {
-    months = 24;
-  } else {
-    months = 30;
-  }
+      const interest = loan * interestRateValue;
+      const totalRepayment = loan + interest;
+      const monthly = totalRepayment / months;
 
-  const interest = loan * interestRateValue;
-  const totalRepayment = loan + interest;
-  const monthly = totalRepayment / months;
-
-  loanAmount.textContent = loan.toLocaleString();
-  repaymentAmount.textContent = totalRepayment.toLocaleString(undefined, { maximumFractionDigits: 0 });
-  interestRate.textContent = "7%";
-  duration.textContent = months;
-  monthlyPayment.textContent = monthly.toLocaleString(undefined, { maximumFractionDigits: 0 });
- }
+      loanAmount.textContent = loan.toLocaleString();
+      repaymentAmount.textContent = totalRepayment.toLocaleString(undefined, { maximumFractionDigits: 0 });
+      interestRate.textContent = "7%";
+      duration.textContent = months;
+      monthlyPayment.textContent = monthly.toLocaleString(undefined, { maximumFractionDigits: 0 });
+    }
 
     updateLoanDetails(loanRange.value);
 
