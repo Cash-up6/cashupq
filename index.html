@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="si">
 <head>
@@ -43,6 +44,7 @@
 
     input[type="range"] {
       width: 100%;
+      transition: all 0.3s ease;
     }
 
     .output {
@@ -69,6 +71,19 @@
       text-align: center;
       border-radius: 6px;
       font-weight: bold;
+      animation: glow 1.5s infinite;
+    }
+
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 5px #28a745;
+      }
+      50% {
+        box-shadow: 0 0 20px #28a745, 0 0 30px #28a745;
+      }
+      100% {
+        box-shadow: 0 0 5px #28a745;
+      }
     }
 
     .stats-cards {
@@ -249,7 +264,34 @@
       updateValues(e.target.value);
     });
 
+    window.addEventListener("pageshow", () => {
+      range.value = 40000;
+      updateValues(40000);
+    });
+
     updateValues(range.value);
+
+    const newUsersElement = document.getElementById("newUsers");
+
+    function getBaseUsers() {
+      const start = new Date();
+      start.setHours(8, 0, 0, 0);
+      const now = new Date();
+
+      if (now < start) return 255;
+
+      const minutesPassed = Math.floor((now - start) / (1000 * 60));
+      const increments = Math.floor(minutesPassed / 5);
+      return 255 + (increments * 4);
+    }
+
+    function updateNewUsers() {
+      const users = getBaseUsers();
+      newUsersElement.textContent = users.toLocaleString();
+    }
+
+    setInterval(updateNewUsers, 10000);
+    updateNewUsers();
   </script>
 </body>
 </html>
