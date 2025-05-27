@@ -87,6 +87,21 @@
       background-color: #218838;
     }
 
+    /* Glowing animation for button */
+    .btn.glow {
+      box-shadow: 0 0 10px #28a745, 0 0 20px #28a745, 0 0 30px #28a745;
+      animation: glowPulse 1.5s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      from {
+        box-shadow: 0 0 5px #28a745;
+      }
+      to {
+        box-shadow: 0 0 20px #28a745, 0 0 30px #28a745;
+      }
+    }
+
     .stats-cards {
       display: flex;
       justify-content: space-between;
@@ -122,7 +137,6 @@
       font-size: 1rem;
     }
 
-    /* Loan Offer Card Styles */
     .loan-offer-card {
       margin-top: 40px;
       padding: 20px;
@@ -133,8 +147,11 @@
     }
 
     .loan-card-content img {
-      width: 80px;
-      margin: 15px 0;
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin: 15px auto;
+      display: block;
     }
 
     .loan-card-content p {
@@ -175,23 +192,22 @@
     <div class="slider-container">
       <label for="loanRange">ඔබගේ ණය මුදල තෝරන්න:</label>
       <input type="range" id="loanRange" min="40000" max="300000" step="10000" value="40000" />
-      <div class="output">රු <span id="loanAmount">30,000</span></div>
+      <div class="output">රු <span id="loanAmount">40,000</span></div>
     </div>
 
     <div class="repayment">
-      මුළු ආපසු ගෙවීමේ මුදල: රු <span id="repaymentAmount">32,100</span><br>
+      මුළු ආපසු ගෙවීමේ මුදල: රු <span id="repaymentAmount">42,800</span><br>
       පොලී අනුපාතය: <span id="interestRate">7%</span><br>
       <strong>කාලය:</strong> <span id="duration">6</span> මාස<br>
-      <strong>මාසික ගෙවීම:</strong> රු <span id="monthlyPayment">5,350</span>
+      <strong>මාසික ගෙවීම:</strong> රු <span id="monthlyPayment">7,133</span>
     </div>
 
-    <a class="btn" href="https://forms.gle/qPBJuX9akn4aRtGR9" target="_blank">ණයක් ඉල්ලන්න</a>
+    <a class="btn glow" href="https://forms.gle/qPBJuX9akn4aRtGR9" target="_blank">ණයක් ඉල්ලන්න</a>
 
-    <!-- Stats Cards Section -->
     <div class="stats-cards">
       <div class="card">
         <div class="icon"><i class="fas fa-users"></i></div>
-        <div class="number">312.000</div>
+        <div class="number">312,000</div>
         <div class="label">ක්‍ෂු තත්පරින් සේවා දායකයින්</div>
       </div>
       <div class="card">
@@ -201,7 +217,6 @@
       </div>
     </div>
 
-    <!-- Loan Offer Card Section -->
     <div class="loan-offer-card">
       <h3>Get a loan in 15 minutes</h3>
       <div class="loan-card-content">
@@ -247,7 +262,19 @@
       monthlyPayment.textContent = monthly.toLocaleString(undefined, { maximumFractionDigits: 0 });
     }
 
-    updateLoanDetails(loanRange.value);
+    // Animate slider on page load
+    window.addEventListener("DOMContentLoaded", () => {
+      let current = 300000;
+      const interval = setInterval(() => {
+        loanRange.value = current;
+        updateLoanDetails(current);
+        if (current <= 40000) {
+          clearInterval(interval);
+        } else {
+          current -= 10000;
+        }
+      }, 100);
+    });
 
     loanRange.addEventListener("input", function () {
       updateLoanDetails(this.value);
