@@ -118,29 +118,33 @@
     const duration = document.getElementById("duration");
     const monthlyPayment = document.getElementById("monthlyPayment");
 
-    function updateLoanDetails(value) {
-      const loan = parseInt(value);
-      const interestRateValue = 0.07;
-      let months;
 
-      if (loan <= 60000) {
-        months = 6;
-      } else if (loan <= 210000) {
-        months = 12;
-      } else {
-        months = 36;
-      }
+    
+ function updateLoanDetails(value) {
+  const loan = parseInt(value);
+  const interestRateValue = 0.07;
+  let months;
 
-      const interest = loan * interestRateValue;
-      const totalRepayment = loan + interest;
-      const monthly = totalRepayment / months;
+  if (loan <= 70000) {
+    months = 6;
+  } else if (loan <= 150000) {
+    months = 12;
+  } else if (loan <= 220000) {
+    months = 24;
+  } else {
+    months = 30;
+  }
 
-      loanAmount.textContent = loan.toLocaleString();
-      repaymentAmount.textContent = totalRepayment.toLocaleString(undefined, { maximumFractionDigits: 0 });
-      interestRate.textContent = "7%";
-      duration.textContent = months;
-      monthlyPayment.textContent = monthly.toLocaleString(undefined, { maximumFractionDigits: 0 });
-    }
+  const interest = loan * interestRateValue;
+  const totalRepayment = loan + interest;
+  const monthly = totalRepayment / months;
+
+  loanAmount.textContent = loan.toLocaleString();
+  repaymentAmount.textContent = totalRepayment.toLocaleString(undefined, { maximumFractionDigits: 0 });
+  interestRate.textContent = "7%";
+  duration.textContent = months;
+  monthlyPayment.textContent = monthly.toLocaleString(undefined, { maximumFractionDigits: 0 });
+ }
 
     updateLoanDetails(loanRange.value);
 
