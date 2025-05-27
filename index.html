@@ -190,7 +190,7 @@
 
     <div class="slider-container">
       <label for="loanRange">ඔබගේ ණය මුදල තෝරන්න:</label>
-      <input type="range" id="loanRange" min="40000" max="300000" step="10000" value="40000" />
+      <input type="range" id="loanRange" min="40000" max="300000" step="1000" value="40000" />
       <div class="output">රු <span id="loanAmount">40,000</span></div>
     </div>
 
@@ -237,7 +237,7 @@
 
     function updateLoanDetails(value) {
       const loan = parseInt(value);
-      const interestRateValue = 0.10; // Updated to 10%
+      const interestRateValue = 0.10;
       let months;
 
       if (loan <= 70000) {
@@ -269,9 +269,9 @@
         if (current <= 40000) {
           clearInterval(interval);
         } else {
-          current -= 10000;
+          current -= 1000;
         }
-      }, 100);
+      }, 10);
     });
 
     loanRange.addEventListener("input", function () {
@@ -315,8 +315,8 @@
       }
     }
 
-    setInterval(animateUserCount, 5 * 60 * 1000); // Every 5 mins
-    animateUserCount(); // Initial call
+    setInterval(animateUserCount, 5 * 60 * 1000);
+    animateUserCount();
   </script>
 
 </body>
