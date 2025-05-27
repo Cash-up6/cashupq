@@ -162,6 +162,39 @@
       margin-top: 10px;
     }
 
+    .benefits-container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .benefit img {
+      width: 60px;
+      height: 60px;
+      margin-right: 20px;
+    }
+
+    .benefit h3 {
+      margin: 0 0 5px;
+      font-size: 1.1em;
+      color: #000;
+    }
+
+    .benefit p {
+      margin: 0;
+      color: #777;
+    }
+
     @media (max-width: 600px) {
       .card {
         flex: 1 1 100%;
@@ -224,6 +257,48 @@
         <a href="#" class="btn-cta">Get money now</a>
       </div>
     </div>
+
+    <div class="benefits-container">
+      <div class="benefit">
+        <img src="pen-icon.png" alt="Simplest Process">
+        <div>
+          <h3>Simplest process</h3>
+          <p>Only valid ID required. No collateral, no pay slips or proofs of billing.</p>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <img src="clock-icon.png" alt="Fast approval">
+        <div>
+          <h3>Fast approval, Instant disbursement.</h3>
+          <p>Get a decision on your loan and receive your money</p>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <img src="repeat-icon.png" alt="Better offer">
+        <div>
+          <h3>Better offer for repeaters.</h3>
+          <p>Repay your loan on time and get up to LKR 50,000 on your next loans and other benefits.</p>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <img src="calculator-icon.png" alt="Transparent costs">
+        <div>
+          <h3>Transparent costs</h3>
+          <p>With the full cost shown up front, use the calculator to count fees applied before making a decision.</p>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <img src="wallet-icon.png" alt="Flexible repayment">
+        <div>
+          <h3>Flexible repayment terms.</h3>
+          <p>In case of unforeseen circumstances through no fault of the borrower, get 30 days extension.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -258,7 +333,6 @@
 
     updateValues(range.value);
 
-    // Auto animate slider from 40000 -> 300000 -> 40000
     function animateSlider(min, max, delay = 0.7) {
       let direction = 1;
       let value = min;
