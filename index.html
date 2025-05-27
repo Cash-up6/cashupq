@@ -15,6 +15,36 @@
       background-color: #f5f5f5;
     }
 
+    .navbar {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    .nav-left .home-btn {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .nav-right .lang-toggle {
+      background-color: transparent;
+      border: 2px solid #007bff;
+      color: #007bff;
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
     .container {
       max-width: 500px;
       margin: 0 auto;
@@ -91,7 +121,7 @@
       padding: 15px;
       border-radius: 8px;
       text-align: center;
-      min-height: 120px; /* Card උස වැඩි කරන්න මෙය එකතු කරලා */
+      min-height: 120px;
     }
 
     .loan-offer-card {
@@ -209,6 +239,17 @@
 </head>
 <body>
 
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="#" class="home-btn">Home</a>
+    </div>
+    <div class="nav-right">
+      <button class="lang-toggle">English / සිංහල</button>
+    </div>
+  </div>
+
+  <!-- Main Container -->
   <div class="container">
     <h2>රු 500,000 දක්වා ණය – සම්පූර්ණයෙන්ම Online!</h2>
     <p>අවශ්‍ය වන්නේ ඔබේ හැඳුනුම්පත පමණි!</p>
