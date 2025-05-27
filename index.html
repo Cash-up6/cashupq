@@ -195,10 +195,10 @@
     </div>
 
     <div class="repayment">
-      මුළු ආපසු ගෙවීමේ මුදල: රු <span id="repaymentAmount">42,800</span><br>
-      පොලී අනුපාතය: <span id="interestRate">7%</span><br>
+      මුළු ආපසු ගෙවීමේ මුදල: රු <span id="repaymentAmount">44,000</span><br>
+      පොලී අනුපාතය: <span id="interestRate">10%</span><br>
       <strong>කාලය:</strong> <span id="duration">6</span> මාස<br>
-      <strong>මාසික ගෙවීම:</strong> රු <span id="monthlyPayment">7,133</span>
+      <strong>මාසික ගෙවීම:</strong> රු <span id="monthlyPayment">7,333</span>
     </div>
 
     <a class="btn glow" href="https://forms.gle/qPBJuX9akn4aRtGR9" target="_blank">ණයක් ඉල්ලන්න</a>
@@ -237,7 +237,7 @@
 
     function updateLoanDetails(value) {
       const loan = parseInt(value);
-      const interestRateValue = 0.07;
+      const interestRateValue = 0.10; // Updated to 10%
       let months;
 
       if (loan <= 70000) {
@@ -256,7 +256,7 @@
 
       loanAmount.textContent = loan.toLocaleString();
       repaymentAmount.textContent = totalRepayment.toLocaleString(undefined, { maximumFractionDigits: 0 });
-      interestRate.textContent = "7%";
+      interestRate.textContent = "10%";
       duration.textContent = months;
       monthlyPayment.textContent = monthly.toLocaleString(undefined, { maximumFractionDigits: 0 });
     }
