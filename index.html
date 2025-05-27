@@ -118,6 +118,7 @@
       text-align: center;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
       min-width: 45%;
+      min-height: 220px;
     }
 
     .card .icon {
@@ -143,6 +144,7 @@
       border-radius: 12px;
       text-align: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      min-height: 300px;
     }
 
     .loan-card-content img {
@@ -230,6 +232,40 @@
 
     .btn-cta:hover {
       background-color: #009624;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 600px) {
+      .stats-cards {
+        flex-direction: column;
+      }
+
+      .card, .loan-offer-card {
+        width: 100%;
+        min-width: 100%;
+        font-size: 1.1rem;
+      }
+
+      .card .number {
+        font-size: 2.4rem;
+      }
+
+      .card .icon {
+        font-size: 2.4rem;
+      }
+
+      .loan-offer-card h3 {
+        font-size: 1.5rem;
+      }
+
+      .loan-card-content p {
+        font-size: 1.1rem;
+      }
+
+      .btn-loan {
+        font-size: 1.1rem;
+        padding: 12px 28px;
+      }
     }
   </style>
 </head>
