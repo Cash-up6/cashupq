@@ -87,7 +87,6 @@
       background-color: #218838;
     }
 
-    /* Glowing animation for button */
     .btn.glow {
       box-shadow: 0 0 10px #28a745, 0 0 20px #28a745, 0 0 30px #28a745;
       animation: glowPulse 1.5s infinite alternate;
@@ -212,7 +211,7 @@
       </div>
       <div class="card">
         <div class="icon"><i class="fas fa-user-plus"></i></div>
-        <div class="number">255</div>
+        <div class="number" id="newUsers">255</div>
         <div class="label">අද දිනය තුළ නව ප්‍රමාණය</div>
       </div>
     </div>
@@ -262,7 +261,6 @@
       monthlyPayment.textContent = monthly.toLocaleString(undefined, { maximumFractionDigits: 0 });
     }
 
-    // Animate slider on page load
     window.addEventListener("DOMContentLoaded", () => {
       let current = 300000;
       const interval = setInterval(() => {
@@ -279,6 +277,46 @@
     loanRange.addEventListener("input", function () {
       updateLoanDetails(this.value);
     });
+
+    // New User Count Auto Update
+    const userCounts = [
+      { time: "08:00", count: 70 },
+      { time: "09:00", count: 110 },
+      { time: "10:00", count: 200 },
+      { time: "12:00", count: 3000 },
+      { time: "15:00", count: 500 },
+      { time: "18:00", count: 800 }
+    ];
+
+    function getCurrentCount() {
+      const now = new Date();
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      let latest = userCounts[0].count;
+
+      for (let i = 0; i < userCounts.length; i++) {
+        const [h, m] = userCounts[i].time.split(":").map(Number);
+        const mins = h * 60 + m;
+        if (currentMinutes >= mins) {
+          latest = userCounts[i].count;
+        }
+      }
+
+      return latest;
+    }
+
+    function animateUserCount() {
+      const userDiv = document.getElementById("newUsers");
+      let current = parseInt(userDiv.textContent.replace(/,/g, ""));
+      const target = getCurrentCount();
+
+      if (current < target) {
+        current += 5;
+        userDiv.textContent = current.toLocaleString();
+      }
+    }
+
+    setInterval(animateUserCount, 5 * 60 * 1000); // Every 5 mins
+    animateUserCount(); // Initial call
   </script>
 
 </body>
